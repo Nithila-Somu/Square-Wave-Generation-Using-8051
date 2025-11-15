@@ -32,42 +32,37 @@ o	Resistor (1kΩ) (if using hardware)
 
 
 ## Program:
-
-````
-#include <reg51.h>
-sbit wave=P1^0;
-void delay();
-void main()
-{
-wave=0;
-while(1)
-{
-wave=1;
-delay();
-wave=0;
-delay();
-}
-}
-void delay()
-{
-unsigned char i;
-TMOD=0X10;
-for(i=0;i<14;i++)
-{
-TH1=0X00;
-TL1=0X00;
-TR1=1;
-while(TF1==0);
-TF1=0;
-}
-}
-
-````
-
+```
+ #include<reg51.h>
+ sbit wave=P1^0;
+ void delay();
+ void main()
+ {
+ wave=0;
+ while(1)
+ {
+ wave=1;
+ delay();
+ wave=0;
+ delay();
+ }
+ }
+ void delay()
+ {
+ unsigned char i;
+ TMOD=0X10;
+ for(i=0;i<14;i++)
+ {
+ TH1=0X00;
+ TL1=0X00;
+ TR1=1;
+ while(TF1==0);
+ TF1=0;
+}}
+```
 ## Output:
+![mpmc exp7](https://github.com/user-attachments/assets/444b13dd-a451-4cda-bda4-234f5a5555b2)
 
-<img width="1007" height="612" alt="image" src="https://github.com/user-attachments/assets/bbb8165f-1394-4e91-b969-188fbeeea627" />
-<img width="997" height="601" alt="image" src="https://github.com/user-attachments/assets/4eee824d-6ad1-4eac-956d-3e7089e0501a" />
 
 ## Result:
 The square wave generation using the 8051 microcontroller has been successfully implemented and simulated using Keil and Proteus.
